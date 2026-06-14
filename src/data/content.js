@@ -20,10 +20,10 @@ export const SKILLS = [
 ];
 
 export const RULES = [
-  { num: "1", color: TEAL, title: "3 companies", desc: "Each role sharper. Each stack deeper." },
-  { num: "2", color: PINK, title: "No shortcuts", desc: "Every feature tested. Every bug tracked." },
-  { num: "3", color: TEAL, title: "Full stack", desc: "Java backend to React frontend — covered." },
-  { num: "4", color: PINK, title: "Always shipping", desc: "Currently building at BPointer Technologies." },
+  { num: "1", color: TEAL, title: "3 Companies", desc: "Each role sharper. Each stack deeper. Growth over comfort." },
+  { num: "2", color: PINK, title: "No Shortcuts", desc: "Every feature tested. Every bug tracked. Quality ships." },
+  { num: "3", color: TEAL, title: "Full Stack", desc: "Java backend to React frontend — every layer covered." },
+  { num: "4", color: PINK, title: "Always Shipping", desc: "Currently building at BPointer Technologies." },
 ];
 
 export const PROJECTS = [
