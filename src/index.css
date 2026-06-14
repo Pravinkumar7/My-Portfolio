@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@500;700;800;900&display=swap');
+
+* , *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: #0a0a0c;
+  color: #f0f0f3;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff2d78;
+}
+
+/* Nav links */
+.nav-link {
+  cursor: pointer;
+  transition: color .2s, letter-spacing .2s;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.nav-link:hover {
+  color: #2de8c4;
+  letter-spacing: 0.18em;
+}
+
+/* Card lift on hover */
+.lift {
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+.lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Skill tags */
+.skill-tag {
+  transition: all .2s;
+  cursor: default;
+}
+.skill-tag:hover {
+  transform: scale(1.06);
+}
+
+/* CTA buttons */
+.cta {
+  cursor: pointer;
+  border: none;
+  transition: all .25s;
+  position: relative;
+  overflow: hidden;
+}
+.cta:hover {
+  transform: translateY(-2px);
+}
+
+/* Decorative geometric shapes */
+.geo {
+  position: absolute;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* ── Keyframes ── */
+@keyframes spin-slow-kf { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-rev-kf { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(1.5); } }
+@keyframes float-kf { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+@keyframes heroSlideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(8%); opacity: 0; } }
+@keyframes heroSlideIn { from { transform: translateX(-8%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+.spin-slow { animation: spin-slow-kf 30s linear infinite; }
+.spin-rev { animation: spin-rev-kf 24s linear infinite; }
+.float { animation: float-kf 5s ease-in-out infinite; }
+
+.hero-img-out { animation: heroSlideOut 1s cubic-bezier(.65,0,.35,1) forwards !important; }
+.hero-img-in { animation: heroSlideIn 1s cubic-bezier(.65,0,.35,1) forwards, heroZoom 5s ease-out forwards; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .hide-mob { display: none !important; }
+  .mob-toggle { display: block !important; }
+  .hero-title { font-size: clamp(3rem, 16vw, 5rem) !important; }
+  .skill-grid { grid-template-columns: 1fr 1fr !important; }
+  .proj-grid { grid-template-columns: 1fr !important; }
+  .rules-grid { grid-template-columns: 1fr !important; }
+  .exp-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr 1fr !important; }
+}
