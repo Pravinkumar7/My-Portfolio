@@ -40,7 +40,7 @@ export const PROJECTS = [
 ];
 
 export const JOBS = [
-  { role: "MERN Stack Developer", co: "BPointer Technologies Pvt. Ltd", period: "Jan 2026 – Present", current: true, color: TEAL,
+  { role: "MERN Stack Developer Intern", co: "BPointer Technologies Pvt. Ltd", period: "Jan 2026 – 28 Aug 2026", current: false, color: TEAL,
     bullets: ["Full-stack apps with MongoDB, Express.js, React.js, Node.js.", "RESTful APIs integrated with React frontends.", "JWT auth, Agile sprints, Git workflow."] },
   { role: "Software Engineer Associate", co: "Visholmedia Pvt. Ltd", period: "Oct 2025 – Jan 2026", current: false, color: PINK,
     bullets: ["Frontend and backend feature development.", "Code reviews, testing, deployment."] },

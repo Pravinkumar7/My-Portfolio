@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { PINK, TEAL, HERO_IMAGES, ROLES } from "../data/content";
+import { PINK, TEAL, ROLES } from "../data/content";
 import Reveal from "./Reveal";
+import profileImage from "../assets/myimage.png";
 
 export default function Hero({ onNavigate }) {
   const [typed, setTyped] = useState("");
   const [roleIdx, setRoleIdx] = useState(0);
-  const [heroImg, setHeroImg] = useState(0);
-  const [prevHeroImg, setPrevHeroImg] = useState(null);
   const delRef = useRef(false);
   const chrRef = useRef(0);
 
@@ -28,35 +27,8 @@ export default function Hero({ onNavigate }) {
     return () => clearTimeout(t);
   }, [roleIdx]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPrevHeroImg(heroImg);
-      setHeroImg((i) => (i + 1) % HERO_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroImg]);
-
-  useEffect(() => {
-    if (prevHeroImg === null) return;
-    const t = setTimeout(() => setPrevHeroImg(null), 1000);
-    return () => clearTimeout(t);
-  }, [prevHeroImg]);
-
   return (
     <section id="about" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", padding: "100px 5vw 60px", overflow: "hidden" }}>
-
-      <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
-        {prevHeroImg !== null && (
-          <div className="hero-img-out" style={{ position: "absolute", inset: 0 }}>
-            <img src={HERO_IMAGES[prevHeroImg]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "blur(20px) brightness(0.2) saturate(0.6)", transform: "scale(1.1)", transition: "transform 6s ease" }} />
-          </div>
-        )}
-        <div key={heroImg} className={prevHeroImg !== null ? "hero-img-in" : ""} style={{ position: "absolute", inset: 0 }}>
-          <img src={HERO_IMAGES[heroImg]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "blur(20px) brightness(0.2) saturate(0.6)", transform: "scale(1.1)", transition: "transform 6s ease" }} />
-        </div>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.7) 50%, rgba(10,10,12,0.95) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 30% 50%, rgba(255,45,120,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(45,232,196,0.06) 0%, transparent 60%)" }} />
-      </div>
 
       <div className="geo spin-slow" style={{ top: "8%", right: "5%", fontSize: 260, color: PINK, zIndex: 1, opacity: 0.08 }}>△</div>
       <div className="geo spin-rev" style={{ bottom: "3%", left: "3%", fontSize: 200, color: TEAL, zIndex: 1, opacity: 0.08 }}>○</div>
@@ -67,22 +39,17 @@ export default function Hero({ onNavigate }) {
         <div style={{ position: "absolute", left: 0, right: 0, height: "30%", background: `linear-gradient(to bottom, transparent, ${TEAL}, transparent)`, animation: "scanline 6s linear infinite" }} />
       </div>
 
-      <div style={{ position: "absolute", bottom: 32, right: "5vw", zIndex: 2, display: "flex", gap: 8 }}>
-        {HERO_IMAGES.map((_, i) => (
-          <div key={i} style={{ width: i === heroImg ? 26 : 7, height: 7, borderRadius: 4, background: i === heroImg ? PINK : "rgba(255,255,255,0.2)", transition: "all .4s cubic-bezier(.16,1,.3,1)" }} />
-        ))}
-      </div>
-
-      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
+      <div className="hero-layout" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
+        <div className="hero-copy">
         <Reveal>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 28, padding: "6px 18px", border: "1px solid rgba(45,232,196,0.25)", borderRadius: 30, background: "rgba(45,232,196,0.05)" }}>
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, animation: "pulse-dot 2s infinite", boxShadow: `0 0 12px ${TEAL}` }} />
-            <span style={{ fontFamily: "'Orbitron',sans-serif", fontSize: 11, color: TEAL, letterSpacing: "0.15em", fontWeight: 600 }}>STATUS: OPEN TO WORK</span>
+            <span style={{ fontFamily: "'Orbitron',sans-serif", fontSize: 11, color: TEAL, letterSpacing: "0.15em", fontWeight: 600 }}>STATUS: OPEN TO OPPORTUNITIES</span>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1 style={{ fontFamily: "'Orbitron',sans-serif", fontWeight: 900, fontSize: "clamp(3.5rem,12vw,8rem)", lineHeight: 0.92, letterSpacing: "0.02em", marginBottom: 6, display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.1em" }}>
+          <h1 style={{ fontFamily: "'Orbitron',sans-serif", fontWeight: 900, fontSize: "clamp(2.8rem,8vw,8rem)", lineHeight: 0.92, letterSpacing: "0.02em", marginBottom: 6, display: "flex", flexWrap: "nowrap", alignItems: "center", gap: "0.1em", whiteSpace: "nowrap" }}>
             <span style={{ color: "#f0f0f3" }}>PRA</span>
             <span style={{
               background: `linear-gradient(135deg, ${PINK}, #ff6b9d, ${PINK})`,
@@ -94,8 +61,8 @@ export default function Hero({ onNavigate }) {
             <span style={{ color: "#f0f0f3" }}>IN</span>
           </h1>
           <h1 style={{
-            fontFamily: "'Orbitron',sans-serif", fontWeight: 900, fontSize: "clamp(3.5rem,12vw,8rem)", lineHeight: 0.92,
-            letterSpacing: "0.02em", marginBottom: 28,
+            fontFamily: "'Orbitron',sans-serif", fontWeight: 900, fontSize: "clamp(2.8rem,8vw,8rem)", lineHeight: 0.92,
+            letterSpacing: "0.02em", marginBottom: 28, whiteSpace: "nowrap",
             background: `linear-gradient(135deg, ${TEAL}, #60f0d0, ${TEAL})`,
             backgroundSize: "200% 200%",
             WebkitBackgroundClip: "text",
@@ -116,7 +83,7 @@ export default function Hero({ onNavigate }) {
 
         <Reveal delay={0.3}>
           <p style={{ fontSize: 15, color: "#9090a0", lineHeight: 1.9, maxWidth: 540, marginBottom: 44, fontWeight: 400 }}>
-            BCA Graduate (2024). Currently building full-stack applications as a <span style={{ color: TEAL, fontWeight: 600 }}>MERN Stack Developer</span> at <span style={{ color: "#fff", fontWeight: 600 }}>BPointer Technologies</span>, Pune. One stack, every layer — backend to frontend to testing.
+            BCA Graduate (2024). Completed my Full Stack internship at <span style={{ color: "#fff", fontWeight: 600 }}>BPointer Technologies</span>, Pune, on 28 August 2026. Now looking for opportunities to build reliable applications across every layer.
           </p>
         </Reveal>
 
@@ -160,6 +127,15 @@ export default function Hero({ onNavigate }) {
             >
               CONTACT ME
             </button>
+          </div>
+        </Reveal>
+        </div>
+
+        <Reveal delay={0.2}>
+          <div className="hero-portrait-wrap">
+            <img className="hero-portrait" src={profileImage} alt="Pravin Rathod" />
+            <span className="portrait-accent portrait-accent-pink" />
+            <span className="portrait-accent portrait-accent-teal" />
           </div>
         </Reveal>
       </div>
