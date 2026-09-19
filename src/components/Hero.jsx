@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { PINK, TEAL, ROLES } from "../data/content";
 import Reveal from "./Reveal";
-import profileImage from "../assets/myimage.png";
+import profileImage from "../assets/myprofile.png";
 
 export default function Hero({ onNavigate }) {
   const [typed, setTyped] = useState("");

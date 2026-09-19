@@ -63,6 +63,8 @@ ul { list-style: none; }
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
+  transform: scale(1.08);
+  transform-origin: center bottom;
   filter: saturate(0.92) contrast(1.04);
 }
 
