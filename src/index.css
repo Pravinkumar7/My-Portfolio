@@ -261,7 +261,8 @@ ul { list-style: none; }
 
 @media (max-width: 768px) {
   .hero-layout { grid-template-columns: 1fr; gap: 48px; }
-  .hero-portrait-wrap { right: 0; width: min(100%, 300px); justify-self: center; order: -1; }
+  .hero-copy { order: 2; }
+  .hero-portrait-wrap { right: 0; width: min(100%, 300px); justify-self: center; order: 1; }
   .exp-grid { grid-template-columns: 1fr !important; }
   .contact-grid { grid-template-columns: repeat(2,1fr) !important; }
   .rules-grid { grid-template-columns: repeat(2,1fr) !important; }
